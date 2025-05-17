@@ -47,7 +47,6 @@ const ClientDashboard = () => {
   return (
     <DashboardLayout title="Client Dashboard" userRole="client">
       <div className="space-y-6">
-        {/* Welcome Card */}
         <Card>
           <CardContent className="p-6">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
