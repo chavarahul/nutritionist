@@ -4,20 +4,20 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
-import { 
-  CheckIcon, 
+import {
+  CheckIcon,
   ArrowRight,
   Users,
   LayoutDashboard,
   Settings
 } from "lucide-react";
+import MarqueeDemo from "@/components/Testimonials";
 
 const Landing = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <NavBar />
-      
-      {/* Hero Section */}
+
       <section className="hero-gradient pt-20 pb-32">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center">
@@ -28,7 +28,7 @@ const Landing = () => {
                 Starts Here
               </h1>
               <p className="text-lg text-gray-700 mb-8">
-                Connect with expert nutritionists, track your progress, and achieve 
+                Connect with expert nutritionists, track your progress, and achieve
                 your health goals with our comprehensive nutrition platform.
               </p>
               <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
@@ -72,8 +72,7 @@ const Landing = () => {
           </div>
         </div>
       </section>
-      
-      {/* Features Section */}
+
       <section id="features" className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
@@ -82,7 +81,7 @@ const Landing = () => {
               Our platform connects clients with professional nutritionists under the supervision of admin experts.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 card-hover">
               <div className="w-14 h-14 bg-primary-100 rounded-lg flex items-center justify-center mb-6">
@@ -93,7 +92,7 @@ const Landing = () => {
                 Separate dashboards and capabilities for administrators, nutritionists, and clients with appropriate access controls.
               </p>
             </div>
-            
+
             <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 card-hover">
               <div className="w-14 h-14 bg-primary-100 rounded-lg flex items-center justify-center mb-6">
                 <LayoutDashboard className="h-7 w-7 text-primary-500" />
@@ -103,7 +102,7 @@ const Landing = () => {
                 Role-specific dashboards that provide the right information and tools for administrators, nutritionists, and clients.
               </p>
             </div>
-            
+
             <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 card-hover">
               <div className="w-14 h-14 bg-primary-100 rounded-lg flex items-center justify-center mb-6">
                 <Settings className="h-7 w-7 text-primary-500" />
@@ -116,8 +115,7 @@ const Landing = () => {
           </div>
         </div>
       </section>
-      
-      {/* Testimonials Section */}
+
       <section id="testimonials" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
@@ -126,42 +124,11 @@ const Landing = () => {
               See what our users have to say about their experience with our nutrition platform.
             </p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Dr. Emma Johnson",
-                role: "Nutritionist",
-                content: "This platform has revolutionized how I manage my clients. The dashboard provides all the information I need at a glance."
-              },
-              {
-                name: "Michael Smith",
-                role: "Client",
-                content: "Working with my nutritionist through this platform has been seamless. I can easily track my progress and communicate with my nutritionist."
-              },
-              {
-                name: "Sarah Williams",
-                role: "Admin",
-                content: "Managing our team of nutritionists and their clients has never been easier. The role-based access control is exceptional."
-              }
-            ].map((testimonial, index) => (
-              <div key={index} className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
-                <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center mr-4">
-                    <span className="text-primary-500 font-bold">{testimonial.name[0]}</span>
-                  </div>
-                  <div>
-                    <h4 className="font-medium">{testimonial.name}</h4>
-                    <p className="text-gray-500 text-sm">{testimonial.role}</p>
-                  </div>
-                </div>
-                <p className="text-gray-600 italic">"{testimonial.content}"</p>
-              </div>
-            ))}
-          </div>
+          <MarqueeDemo />
         </div>
       </section>
-      
+
+
       {/* CTA Section */}
       <section id="pricing" className="py-20">
         <div className="container mx-auto px-4">
