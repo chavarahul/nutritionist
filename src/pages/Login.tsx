@@ -19,7 +19,6 @@ const Login = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    // Simple validation
     if (!email || !password || !role) {
       toast.error("Please fill in all fields");
       setIsLoading(false);
@@ -33,10 +32,8 @@ const Login = () => {
         role
       });
 
-      // Assuming the API returns a token and user data
       const { token, user } = response.data;
 
-      // Store token and user info in localStorage
       localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify({
         email: user.email,
