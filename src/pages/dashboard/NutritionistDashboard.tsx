@@ -25,13 +25,6 @@ const NutritionistDashboard = () => {
   const [appointments, setAppointments] = useState(MOCK_APPOINTMENTS);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    // Check if user is logged in and is a nutritionist
-    const user = localStorage.getItem("user");
-    if (!user || JSON.parse(user).role !== "nutritionist") {
-      navigate("/login");
-    }
-  }, [navigate]);
 
   return (
     <DashboardLayout title="Nutritionist Dashboard" userRole="nutritionist">

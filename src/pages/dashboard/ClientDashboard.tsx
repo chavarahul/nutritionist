@@ -44,14 +44,6 @@ const ClientDashboard = () => {
   const [clientData, setClientData] = useState(MOCK_CLIENT);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    // Check if user is logged in and is a client
-    const user = localStorage.getItem("user");
-    if (!user || JSON.parse(user).role !== "client") {
-      navigate("/login");
-    }
-  }, [navigate]);
-
   return (
     <DashboardLayout title="Client Dashboard" userRole="client">
       <div className="space-y-6">

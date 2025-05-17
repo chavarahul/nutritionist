@@ -27,18 +27,10 @@ const AdminDashboard = () => {
   const [clients, setClients] = useState(MOCK_DATA.clients);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    // Check if user is logged in and is admin
-    const user = localStorage.getItem("user");
-    if (!user || JSON.parse(user).role !== "admin") {
-      navigate("/login");
-    }
-  }, [navigate]);
 
   return (
     <DashboardLayout title="Admin Dashboard" userRole="admin">
       <div className="space-y-6">
-        {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <Card className="border-l-4 border-l-primary-500">
             <CardHeader className="pb-2">

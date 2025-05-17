@@ -8,45 +8,39 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { toast } from "sonner";
 import axios from "axios";
 
-const Login = () => {
+const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [role, setRole] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
     setIsLoading(true);
 
-    // Simple validation
-    if (!email || !password || !role) {
+    if (!email || !password || !confirmPassword || !role) {
       toast.error("Please fill in all fields");
       setIsLoading(false);
       return;
     }
 
+    if (password !== confirmPassword) {
+      toast.error("Passwords do not match");
+      setIsLoading(false);
+      return;
+    }
+
     try {
-      const response = await axios.post("/api/login", {
+      const response = await axios.post("/api/signup", {
         email,
         password,
         role
       });
-
-      // Assuming the API returns a token and user data
-      const { token, user } = response.data;
-
-      // Store token and user info in localStorage
-      localStorage.setItem("token", token);
-      localStorage.setItem("user", JSON.stringify({
-        email: user.email,
-        role: user.role
-      }));
-
-      toast.success(`Logged in as ${user.role}`);
-      navigate(`/dashboard/${user.role}`);
+      navigate(`/login`);
     } catch (error) {
-      const errorMessage = error.response?.data?.message || "Invalid credentials";
+      const errorMessage = error.response?.data?.message || "Signup failed. Please try again.";
       toast.error(errorMessage);
     } finally {
       setIsLoading(false);
@@ -65,13 +59,13 @@ const Login = () => {
         
         <Card>
           <CardHeader>
-            <CardTitle className="text-2xl font-bold text-center">Sign In</CardTitle>
+            <CardTitle className="text-2xl font-bold text-center">Sign Up</CardTitle>
             <CardDescription className="text-center">
-              Enter your credentials to access your account
+              Create a new account to get started
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleLogin} className="space-y-4">
+            <form onSubmit={handleSignup} className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
                 <Input
@@ -96,7 +90,18 @@ const Login = () => {
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="role">Login As</Label>
+                <Label htmlFor="confirmPassword">Confirm Password</Label>
+                <Input
+                  id="confirmPassword"
+                  type="password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  required
+                />
+              </div>
+              
+              <div className="space-y-2">
+                <Label htmlFor="role">Register As</Label>
                 <Select onValueChange={setRole} value={role}>
                   <SelectTrigger>
                     <SelectValue placeholder="Select role" />
@@ -114,21 +119,21 @@ const Login = () => {
                 className="w-full bg-primary-500 hover:bg-primary-600 text-white"
                 disabled={isLoading}
               >
-                {isLoading ? "Signing In..." : "Sign In"}
+                {isLoading ? "Signing Up..." : "Sign Up"}
               </Button>
             </form>
             
             <div className="mt-4 text-center">
               <a href="#" className="text-sm text-primary-500 hover:underline">
-                Forgot password?
+                Need help?
               </a>
             </div>
           </CardContent>
           <CardFooter className="flex justify-center">
             <p className="text-sm text-gray-500">
-              Don't you have an account?{" "}
-              <Link to="/signup" className="text-primary-500 hover:underline">
-                Sign Up
+              Already have an account?{" "}
+              <Link to="/login" className="text-primary-500 hover:underline">
+                Sign In
               </Link>
             </p>
           </CardFooter>
@@ -144,4 +149,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;

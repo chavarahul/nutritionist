@@ -10,6 +10,7 @@ import AdminDashboard from "./pages/dashboard/AdminDashboard";
 import NutritionistDashboard from "./pages/dashboard/NutritionistDashboard";
 import ClientDashboard from "./pages/dashboard/ClientDashboard";
 import NotFound from "./pages/NotFound";
+import Signup from "./pages/SignUp";
 
 const queryClient = new QueryClient();
 
@@ -22,23 +23,23 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
-          
+          <Route path="/signup" element={<Signup />} />
           {/* Dashboard Routes */}
           <Route path="/dashboard/admin" element={<AdminDashboard />} />
           <Route path="/dashboard/nutritionist" element={<NutritionistDashboard />} />
           <Route path="/dashboard/client" element={<ClientDashboard />} />
-          
+
           {/* Redirect /dashboard to the appropriate dashboard based on user role */}
-          <Route 
-            path="/dashboard" 
+          <Route
+            path="/dashboard"
             element={
-              <Navigate 
-                to="/login" 
-                replace 
+              <Navigate
+                to="/login"
+                replace
               />
-            } 
+            }
           />
-          
+
           {/* Catch all route for 404 */}
           <Route path="*" element={<NotFound />} />
         </Routes>
