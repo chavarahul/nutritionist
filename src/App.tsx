@@ -10,17 +10,14 @@ import AdminDashboard from "./pages/dashboard/AdminDashboard";
 import NutritionistDashboard from "./pages/dashboard/NutritionistDashboard";
 import ClientDashboard from "./pages/dashboard/ClientDashboard";
 
-// Admin Components
 import AdminClients from "./pages/admin/AdminClients";
 import AdminNuts from "./pages/admin/AdminNuts";
 import AdminSettings from "./pages/admin/AdminSettings";
 
-// Nutritionist Components
 import NutClients from "./pages/nut/NutClients";
 import NutProfile from "./pages/nut/NutProfile";
 import NutSettings from "./pages/nut/NutSettings";
 
-// Client Components
 import ClientNut from "./pages/client/ClientNut";
 import ClientProfile from "./pages/client/ClientProfile";
 import ClientSettings from "./pages/client/ClientSettings";
