@@ -73,7 +73,7 @@ const DashboardLayout = ({ children, title, userRole }: DashboardLayoutProps) =>
                 <div className="w-8 h-8 rounded-full bg-primary-500 flex items-center justify-center">
                   <span className="text-white font-bold">N</span>
                 </div>
-                <span className="text-xl font-bold">NutriTrack</span>
+                <span className="text-l font-extrabold">Livin Significant</span>
               </div>
             )}
             <button 

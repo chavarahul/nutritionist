@@ -15,6 +15,19 @@ const Signup = () => {
   const [role, setRole] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const [form, setForm] = useState({
+    name: "",
+    age: "",
+    phone: "",
+    gender: "",
+    location: "",
+    issue: "",
+    qualification: "",
+  });
+
+  const handleChange = (field) => (e) => {
+    setForm({ ...form, [field]: e.target.value });
+  };
 
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -26,6 +39,10 @@ const Signup = () => {
       return;
     }
 
+    if(password.length < 8){
+      toast.error("please enter password of minimum length 8 characters")
+    }
+
     if (password !== confirmPassword) {
       toast.error("Passwords do not match");
       setIsLoading(false);
@@ -33,10 +50,11 @@ const Signup = () => {
     }
 
     try {
-      const response = await axios.post("/api/signup", {
+      const response = await axios.post("http://localhost:3000/api/users/signup", {
         email,
         password,
-        role
+        role,
+        ...form
       });
       navigate(`/login`);
     } catch (error) {
@@ -54,7 +72,7 @@ const Signup = () => {
           <div className="w-10 h-10 rounded-full bg-primary-500 flex items-center justify-center">
             <span className="text-white font-bold">N</span>
           </div>
-          <span className="text-2xl font-bold">NutriTrack</span>
+          <span className="text-2xl font-bold">Livin Significant</span>
         </Link>
         
         <Card>
@@ -113,6 +131,111 @@ const Signup = () => {
                   </SelectContent>
                 </Select>
               </div>
+
+              {
+                role == "" ? <div>nothing</div> : role == "client" ? <div>
+                   <div className="space-y-2">
+                    <Label htmlFor="name">Name</Label>
+                    <Input
+                      id="name"
+                      type="text"
+                      value={form.name}
+                      onChange={handleChange("name")}
+                      required
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="age">Age</Label>
+                    <Input
+                      id="age"
+                      type="number"
+                      value={form.age}
+                      onChange={handleChange("age")}
+                      required
+                    />
+                 </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="phone">Phone</Label>
+                  <Input
+                    id="phone"
+                    type="tel"
+                    value={form.phone}
+                    onChange={handleChange("phone")}
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="gender">Gender</Label>
+                  <Input
+                    id="gender"
+                    type="text"
+                    value={form.gender}
+                    onChange={handleChange("gender")}
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="location">Location</Label>
+                  <Input
+                    id="location"
+                    type="text"
+                    value={form.location}
+                    onChange={handleChange("location")}
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="issue">Issue</Label>
+                  <Input
+                    id="issue"
+                    type="text"
+                    value={form.issue}
+                    onChange={handleChange("issue")}
+                    required
+                  />
+                </div>
+        
+                </div> : role == "nutritionist" ? <div>
+                   <div className="space-y-2">
+                    <Label htmlFor="name">Name</Label>
+                    <Input
+                      id="name"
+                      type="text"
+                      value={form.name}
+                      onChange={handleChange("name")}
+                      required
+                    />
+                  </div>
+                  <div className="space-y-2">
+                  <Label htmlFor="qualification">Qualification</Label>
+                  <Input
+                    id="qualification"
+                    type="text"
+                    value={form.qualification}
+                    onChange={handleChange("qualification")}
+                    required
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="phone">Phone</Label>
+                  <Input
+                    id="phone"
+                    type="tel"
+                    value={form.phone}
+                    onChange={handleChange("phone")}
+                    required
+                  />
+                </div>
+                </div> : 
+                 <div>Welcome Admin</div>
+              }
+
+
+
               
               <Button
                 type="submit"

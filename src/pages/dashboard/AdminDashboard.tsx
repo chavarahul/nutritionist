@@ -42,14 +42,14 @@ const AdminDashboard: React.FC = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const [nutritionistsData, clientsData, profileData] = await Promise.all([
-          getAllNutritionists(),
-          getAllClients(),
-          getAdminProfile(),
-        ]);
-        setNutritionists(nutritionistsData);
-        setClients(clientsData);
-        setAdminProfile(profileData);
+        // const [nutritionistsData, clientsData, profileData] = await Promise.all([
+        //   // getAllNutritionists(),
+        //   // getAllClients(),
+        //   // getAdminProfile(),
+        // ]);
+        // setNutritionists(nutritionistsData);
+        // setClients(clientsData);
+        // setAdminProfile(profileData);
       } catch (err: unknown) {
         const errorMessage = err instanceof Error ? err.message : "An error occurred";
         setError(errorMessage);

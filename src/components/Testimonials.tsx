@@ -3,40 +3,34 @@ import { Marquee } from "@/components/magicui/marquee";
 
 const reviews = [
   {
-    name: "Dr. Emma Johnson",
+    name: "Anjali",
     role: "Nutritionist",
     content:
       "This platform has revolutionized how I manage my clients. The dashboard provides all the information I need at a glance.",
   },
   {
-    name: "Michael Smith",
+    name: "Suresh",
     role: "Client",
     content:
       "Working with my nutritionist through this platform has been seamless. I can easily track my progress and communicate with my nutritionist.",
   },
   {
-    name: "Sarah Williams",
+    name: "Madhusudan",
     role: "Admin",
     content:
       "Managing our team of nutritionists and their clients has never been easier. The role-based access control is exceptional.",
   },
   {
-    name: "Dr. Liam Patel",
+    name: "Ramya",
     role: "Nutritionist",
     content:
       "The analytics tools are fantastic. I can track client progress in real-time and adjust plans accordingly.",
   },
   {
-    name: "Sophie Brown",
+    name: "Sirisha",
     role: "Client",
     content:
       "The app is user-friendly, and I love the personalized meal plans my nutritionist creates for me.",
-  },
-  {
-    name: "James Carter",
-    role: "Admin",
-    content:
-      "The platform's scalability allows us to onboard new nutritionists and clients effortlessly.",
   },
 ];
 
