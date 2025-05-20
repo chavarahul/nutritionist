@@ -1,4 +1,4 @@
-
+import axios from "axios"
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DashboardLayout from "@/components/DashboardLayout";
@@ -21,10 +21,35 @@ const MOCK_APPOINTMENTS = [
 ];
 
 const NutritionistDashboard = () => {
+  const user = localStorage.getItem("user")
+  const userJSON = JSON.parse(user)
   const [clients, setClients] = useState(MOCK_CLIENTS);
+  useEffect(() => {
+     const fetchDetails = async() => {
+       const userJSONValue = JSON.parse(user)
+      //  const email = encodeURIComponent(userJSONValue.email);
+       const token = localStorage.getItem("token")
+       const nutDetails = await axios.get(`http://localhost:3000/api/nuts/email`, {
+        params: { email: userJSONValue.email },
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      // console.log(nutDetails)
+      const clientDetails = await axios.get(`http://localhost:3000/api/client/byNutId`, {
+        params: { id: nutDetails.data[0].id },
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      console.log(clientDetails)
+      setClients(clientDetails.data)
+      // console.log(clients)
+     }
+     fetchDetails()
+  })
   const [appointments, setAppointments] = useState(MOCK_APPOINTMENTS);
   const navigate = useNavigate();
-
 
   return (
     <DashboardLayout title="Nutritionist Dashboard" userRole="nutritionist">

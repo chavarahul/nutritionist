@@ -1,4 +1,4 @@
-
+import axios from "axios"
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DashboardLayout from "@/components/DashboardLayout";
@@ -41,7 +41,44 @@ const MOCK_CLIENT = {
 };
 
 const ClientDashboard = () => {
+  const user = localStorage.getItem("user")
   const [clientData, setClientData] = useState(MOCK_CLIENT);
+  const [nutData, setNutData] = useState({
+    name: "",
+    email: "",
+  })
+  useEffect(() => {
+    const fetchData = async() => {
+      const userJSONValue = JSON.parse(user)
+      const email = encodeURIComponent(userJSONValue.email);
+      const token = localStorage.getItem("token")
+      const clientDetails = await axios.get(`http://localhost:3000/api/client/email`, {
+        params: { email:userJSONValue.email },
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      console.log(clientDetails)
+      const nuttData = await axios.get(`http://localhost:3000/api/nuts/id`, {
+        params: {
+          id: clientDetails.data[0].nId
+        },
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      setNutData(nuttData.data[0])
+      //  console.log(nuttData.data[0])
+     // const clientDetails = await axios.get("http://localhost:3000/api/client"+"/"+userJSONValue.email)
+      
+      setClientData((data) => ({
+        ...data,
+        name: clientDetails.data[0].name,
+        email: clientDetails.data[0].email,
+      }))
+    }
+    fetchData()
+  }, [])
   const navigate = useNavigate();
 
   return (
@@ -125,8 +162,8 @@ const ClientDashboard = () => {
             <CardContent>
               <div className="flex justify-between items-center">
                 <div>
-                  <div className="text-xl font-bold">{clientData.nutritionist.name}</div>
-                  <div className="text-gray-500 text-sm">{clientData.nutritionist.specialty}</div>
+                  <div className="text-xl font-bold">{nutData.name}</div>
+                  {/* <div className="text-gray-500 text-sm">{clientData.nutritionist.specialty}</div> */}
                 </div>
                 <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center">
                   <User className="h-6 w-6 text-primary-500" />
@@ -199,12 +236,12 @@ const ClientDashboard = () => {
                 </div>
               </div>
               <div className="md:w-3/4">
-                <h3 className="text-xl font-bold mb-2">{clientData.nutritionist.name}</h3>
-                <p className="text-gray-600 mb-4">
+                <h3 className="text-xl font-bold mb-2">{nutData.name}</h3>
+                {/* <p className="text-gray-600 mb-4">
                   Specialty: {clientData.nutritionist.specialty}
-                </p>
+                </p> */}
                 <p className="text-gray-600 mb-4">
-                  Email: {clientData.nutritionist.email}
+                  Email: {nutData.email}
                 </p>
                 <div className="space-x-4">
                   <Button className="bg-primary-500 hover:bg-primary-600">
@@ -220,6 +257,7 @@ const ClientDashboard = () => {
         </Card>
       </div>
     </DashboardLayout>
+
   );
 };
 

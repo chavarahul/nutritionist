@@ -9,6 +9,22 @@ import Login from "./pages/Login";
 import AdminDashboard from "./pages/dashboard/AdminDashboard";
 import NutritionistDashboard from "./pages/dashboard/NutritionistDashboard";
 import ClientDashboard from "./pages/dashboard/ClientDashboard";
+
+// Admin Components
+import AdminClients from "./pages/admin/AdminClients";
+import AdminNuts from "./pages/admin/AdminNuts";
+import AdminSettings from "./pages/admin/AdminSettings";
+
+// Nutritionist Components
+import NutClients from "./pages/nut/NutClients";
+import NutProfile from "./pages/nut/NutProfile";
+import NutSettings from "./pages/nut/NutSettings";
+
+// Client Components
+import ClientNut from "./pages/client/ClientNut";
+import ClientProfile from "./pages/client/ClientProfile";
+import ClientSettings from "./pages/client/ClientSettings";
+
 import NotFound from "./pages/NotFound";
 import Signup from "./pages/SignUp";
 
@@ -25,6 +41,15 @@ const App = () => (
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/dashboard/admin" element={<AdminDashboard />} />
+          <Route path="/dashboard/admin/nutritionists" element={<AdminNuts/>} />
+          <Route path="/dashboard/admin/clients" element={<AdminClients/>} />
+          <Route path="/dashboard/admin/settings" element={<AdminSettings/>} />
+          <Route path="/dashboard/nutritionist/clients" element={<NutClients/>} />
+          <Route path="/dashboard/nutritionist/profile" element={<NutProfile/>} />
+          <Route path="/dashboard/nutritionist/settings" element={<NutSettings/>} />
+          <Route path="/dashboard/client/profile" element={<ClientProfile/>} />
+          <Route path="/dashboard/client/nutritionist" element={<ClientNut/>} />
+          <Route path="/dashboard/client/settings" element={<ClientSettings/>} />
           <Route path="/dashboard/nutritionist" element={<NutritionistDashboard />} />
           <Route path="/dashboard/client" element={<ClientDashboard />} />
           <Route

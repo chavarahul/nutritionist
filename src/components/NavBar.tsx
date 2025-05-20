@@ -10,17 +10,17 @@ const NavBar = () => {
   return (
     <header className="w-full bg-transparent backdrop-blur-md shadow-sm sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link to="/" className="flex items-center space-x-2">
+        <HashLink smooth to="/#home" className="flex items-center space-x-2">
           <div className="w-8 h-8 rounded-full bg-primary-500 flex items-center justify-center">
             <span className="text-white font-bold">N</span>
           </div>
-          <span className="text-xl font-bold text-gray-900">NutriTrack</span>
-        </Link>
+          <span className="text-xl font-bold text-gray-900">Livin Significant</span>
+        </HashLink>
 
         <nav className="hidden md:flex items-center space-x-8">
-          <Link to="/" className="text-gray-700 hover:text-primary-500 font-medium">
+          <HashLink smooth to="/#home" className="text-gray-700 hover:text-primary-500 font-medium">
             Home
-          </Link>
+          </HashLink>
           <HashLink
             smooth
             to="/#features"
@@ -66,6 +66,8 @@ const NavBar = () => {
               Features
             </HashLink>
             <HashLink
+
+
               smooth
               to="/#testimonials"
               className="text-gray-700 hover:text-primary-500 font-medium"

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -26,7 +26,7 @@ const Login = () => {
     }
 
     try {
-      const response = await axios.post("/api/login", {
+      const response = await axios.post("http://localhost:3000/api/users/login", {
         email,
         password,
         role
@@ -57,7 +57,7 @@ const Login = () => {
           <div className="w-10 h-10 rounded-full bg-primary-500 flex items-center justify-center">
             <span className="text-white font-bold">N</span>
           </div>
-          <span className="text-2xl font-bold">NutriTrack</span>
+          <span className="text-2xl font-bold">Livin Singnificant</span>
         </Link>
         
         <Card>
