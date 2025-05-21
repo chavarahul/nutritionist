@@ -23,6 +23,8 @@ const ClientProfile: FC = () => {
   const personalInfo = {
     name: "John Doe",
     email: "john@example.com",
+    phoneNumber: "+91 9342363097",
+    address: "123 Wellness St, Healthy City, HC 12345",
     age: 28,
     height: "5'10\"",
     weight: "75kg",
@@ -98,6 +100,22 @@ const ClientProfile: FC = () => {
                       type="email" 
                       className="w-full p-2 border rounded-md"
                       defaultValue={personalInfo.email}
+                    />
+                  </div>
+                  <div className="space-y-1">
+                    <label className="text-sm font-medium">Phone Number</label>
+                    <input 
+                      type="tel" 
+                      className="w-full p-2 border rounded-md"
+                      defaultValue={personalInfo.phoneNumber}
+                    />
+                  </div>
+                  <div className="space-y-1">
+                    <label className="text-sm font-medium">Address</label>
+                    <textarea 
+                      className="w-full p-2 border rounded-md resize-y"
+                      rows={3}
+                      defaultValue={personalInfo.address}
                     />
                   </div>
                 </div>

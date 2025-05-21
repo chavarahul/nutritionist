@@ -7,6 +7,8 @@ import DashboardLayout from '@/components/DashboardLayout';
 interface NutritionistProfile {
   name: string;
   email: string;
+  phoneNumber: string;
+  address: string;
   specialization: string;
   experience: string;
   qualifications: string[];
@@ -21,6 +23,8 @@ const NutProfile: FC = () => {
   const profile: NutritionistProfile = {
     name: "Dr. Sarah Smith",
     email: "sarah.smith@example.com",
+    phoneNumber: "+1 (555) 987-6543",
+    address: "456 Health Ave, Nutrition City, NC 67890",
     specialization: "Sports Nutrition",
     experience: "8 years",
     qualifications: [
@@ -82,6 +86,30 @@ const NutProfile: FC = () => {
                       defaultValue={profile.email}
                     />
                   </div>
+                  <div className="space-y-2">
+                    <label className="font-medium">Phone Number</label>
+                    <input 
+                      type="tel" 
+                      className="w-full p-2 border rounded-md"
+                      defaultValue={profile.phoneNumber}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="font-medium">Experience</label>
+                    <input 
+                      type="text" 
+                      className="w-full p-2 border rounded-md"
+                      defaultValue={profile.experience}
+                    />
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <label className="font-medium">Address</label>
+                  <textarea 
+                    className="w-full p-2 border rounded-md resize-y"
+                    rows={3}
+                    defaultValue={profile.address}
+                  />
                 </div>
                 <div className="space-y-2">
                   <label className="font-medium">Specialization</label>
