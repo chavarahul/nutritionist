@@ -8,7 +8,7 @@ const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   return (
-    <header className="w-full bg-transparent backdrop-blur-md shadow-sm sticky top-0 z-50">
+    <header className="w-full bg-transparent backdrop-blur-md  sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <HashLink smooth to="/#home" className="flex items-center space-x-2">
           <div className="w-8 h-8 rounded-full bg-primary-500 flex items-center justify-center">
